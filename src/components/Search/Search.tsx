@@ -1,7 +1,9 @@
-import React from "react";
+import { type FC, type InputHTMLAttributes } from "react";
 import styles from "./Search.module.css";
 
-const Search = ({ ...props }) => {
+type SearchProps = InputHTMLAttributes<HTMLInputElement>;
+
+const Search: FC<SearchProps> = ({ ...props }) => {
   return (
     <div className={styles.search}>
       <label htmlFor="search">

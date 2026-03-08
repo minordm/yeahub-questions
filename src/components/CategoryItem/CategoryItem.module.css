@@ -10,6 +10,7 @@
 	width: fit-content;
 	cursor: pointer;
 	transition: background .2s, color .2s, border-color .2s;
+	display: flex;
 
 	&:hover {
 		color: var(--text-secondary-color);
@@ -17,7 +18,17 @@
 		background: #6A0BFF;
 	}
 
-	&:active {
+	&.active {
 		border: 1px solid #6A0BFF;
+	}
+}
+
+.icon {
+	/* background: none; */
+	display: flex;
+
+	& img {
+		width: 20px;
+		height: 20px;
 	}
 }

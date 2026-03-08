@@ -26,3 +26,27 @@
 	flex-direction: column;
 	gap: 24px;
 }
+
+.wrapper-not-found {
+	border-radius: 8px;
+	box-shadow: 0 4px 10px rgba(106, 99, 118, 0.102);
+}
+
+.question {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	padding: 24px;
+	cursor: pointer;
+	position: relative;
+	align-items: center;
+
+	& h2 {
+		display: flex;
+		align-items: center;
+		gap: 8px;
+		font-size: 20px;
+		line-height: 1.2;
+		font-weight: 500;
+	}
+}

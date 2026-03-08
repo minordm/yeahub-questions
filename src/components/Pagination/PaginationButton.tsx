@@ -1,35 +1,46 @@
-import React, { useState } from "react";
+import type { Dispatch, FC, SetStateAction } from "react";
 import Pagination from "./Pagination";
 
-const PaginationButton = () => {
-  const [curPage, setCurPage] = useState(1);
+interface IPaginationButtonProps {
+  // arr: number[];
+  // curPage: number;
+  setCurPage: Dispatch<SetStateAction<number>>;
+  pageCount: number;
+}
 
-  const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-  let filterArr = arr;
+const PaginationButton: FC<IPaginationButtonProps> = ({
+  // arr,
+  // curPage,
+  setCurPage,
+  pageCount,
+}) => {
+  // const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+  // const filterArr = arr;
 
-  const handleNext = () => {
-    if (curPage < arr.length) {
-      setCurPage((prev) => prev + 1);
-    }
-  };
+  // const handleNext = () => {
+  //   if (curPage < arr.length) {
+  //     setCurPage((prev) => prev + 1);
+  //   }
+  // };
 
-  const handlePrev = () => {
-    if (curPage > 1) {
-      setCurPage((prev) => prev - 1);
-    }
-  };
+  // const handlePrev = () => {
+  //   if (curPage > 1) {
+  //     setCurPage((prev) => prev - 1);
+  //   }
+  // };
 
-  const setPage = (numberPage) => {
+  const setPage = (numberPage: number) => {
     setCurPage(numberPage);
   };
 
   return (
     <Pagination
-      arr={filterArr}
-      next={handleNext}
-      prev={handlePrev}
+      // arr={filterArr}
+      pageCount={pageCount}
+      // next={handleNext}
+      // prev={handlePrev}
       setPage={setPage}
-      curPage={curPage}
+      // curPage={curPage}
     />
   );
 };

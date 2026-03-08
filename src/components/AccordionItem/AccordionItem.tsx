@@ -1,30 +1,41 @@
 import type { FC, Ref } from "react";
 
 import cn from "classnames";
-import { FaChevronUp } from "react-icons/fa6";
+import { FaChevronDown } from "react-icons/fa6";
 import styles from "./AccordionItem.module.css";
+import type { IQuestionProps } from "./AccordionButton";
+import { HtmlRenderer } from "../HtmlRenderer/HtmlRenderer";
 
-interface AccordionItemProps {
+interface IAccordionItemProps {
   height: number;
   ref: Ref<HTMLDivElement> | null;
   isOpen: boolean;
   open: () => void;
 }
 
-const AccordionItem: FC<AccordionItemProps> = ({
+// function RawHtmlComponent({ htmlString }: { htmlString: string }) {
+//   return <div dangerouslySetInnerHTML={{ __html: htmlString }} />;
+// }
+
+const AccordionItem: FC<IAccordionItemProps & IQuestionProps> = ({
   isOpen,
   open,
   ref,
   height,
+  title,
+  rate,
+  complexity,
+  shortAnswer,
+  id,
 }) => {
   return (
     <div className={styles.wrapper}>
       <div className={styles.question} onClick={open}>
         <h2>
           <img src="/ball.svg" alt="" />
-          Что такое Virlual DOM, и как он работает?
+          {title}
         </h2>
-        <FaChevronUp
+        <FaChevronDown
           className={cn(styles["show-button"], {
             [styles.active]: isOpen,
           })}
@@ -40,17 +51,20 @@ const AccordionItem: FC<AccordionItemProps> = ({
         <div className={styles.action}>
           <div className={styles.setting}>
             <div className={styles.props}>
-              Рейтинг: <span>4</span>
+              Рейтинг: <span>{rate}</span>
             </div>
             <div className={styles.props}>
-              Сложность:&nbsp;<span>4</span>
+              Сложность:&nbsp;<span>{complexity}</span>
             </div>
           </div>
           <button className={styles.close}>
             <img src="/close.svg" alt="" />
           </button>
         </div>
-        <img src="/example.png" alt="" className={styles["answer-img"]} />
+        <HtmlRenderer html={shortAnswer} />
+        {/* {RawHtmlComponent({ htmlString: shortAnswer })} */}
+        {/* {parse(shortAnswer)} */}
+        {/* <img src="/example.png" alt="" className={styles["answer-img"]} />
         <p className={styles.desc}>
           Virtual DOM (виртуальный DOM) — это программная концепция,
           используемая в разработке веб-приложений для повышения эффективности
@@ -61,7 +75,7 @@ const AccordionItem: FC<AccordionItemProps> = ({
           приложения Virtual DOM сравнивает новое состояние с предыдущим и
           обновляет только те части реального DOM, которые изменились, вместо
           перерисовки всего документа.
-        </p>
+        </p> */}
       </div>
     </div>
   );

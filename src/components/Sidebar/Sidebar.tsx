@@ -1,37 +1,109 @@
-import React from "react";
+import type { FC } from "react";
 import Search from "../Search/Search";
 import CategoryBlock from "../CategoryBlock/CategoryBlock";
 import styles from "./Sidebar.module.css";
 
-const Sidebar = () => {
-  const arr = [
-    "UI/UX designe",
-    "Frontend developer",
-    "Backend developer",
-    "Fullstack",
-    "Figma",
+const Sidebar: FC<{
+  search: string;
+  setSearch: (searchText: string) => void;
+  selectedSpecialization: string;
+  setSelectedSpecialization: (specialization: string) => void;
+  selectSkill: string;
+  setSelectSkill: (skill: string) => void;
+  selectComplexity: string;
+  setSelectComplexity: (complexity: string) => void;
+  selectRating: string;
+  setSelectRating: (rating: string) => void;
+}> = ({
+  search,
+  setSearch,
+  selectedSpecialization,
+  setSelectedSpecialization,
+  selectSkill,
+  setSelectSkill,
+  selectComplexity,
+  setSelectComplexity,
+  selectRating,
+  setSelectRating,
+}) => {
+  // const [selectedSpecialization, setSelectedSpecialization] =
+  //   useState<string>("11");
+  // const [selectSkill, setSelectSkill] = useState<string>("");
+  // const [selectComplexity, setSelectComplexity] = useState<string>("");
+  // const [selectRating, setSelectRating] = useState<string>("");
+
+  const complexity = [
+    { id: "1,2,3", title: "1-3" },
+    { id: "4,5,6", title: "4-6" },
+    { id: "7,8", title: "7-8" },
+    { id: "9,10", title: "9-10" },
   ];
+  const rating = [
+    { id: "1", title: "1" },
+    { id: "2", title: "2" },
+    { id: "3", title: "3" },
+    { id: "4", title: "4" },
+    { id: "5", title: "5" },
+  ];
+  // const state = ["Изученные", "Не изученные", "Все"];
 
-  const arr1 = ["Figma", "CSS", "HTML", "React.js"];
+  // console.log("специализация", selectedSpecialization);
+  // console.log("скли", selectSkill);
+  // console.log("сложность", selectComplexity);
+  // console.log("рейтинг", selectRating);
 
-  const arr2 = ["1-3", "4-6", "7-8", "9-10"];
+  const toggleCategory = (id: string) => {
+    if (!selectRating.includes(id)) {
+      setSelectRating(id);
+    } else {
+      setSelectRating("");
+    }
+  };
 
-  const arr3 = [1, 2, 3, 4, 5];
+  const toggleCategory1 = (id: string) => {
+    if (!selectComplexity.includes(id)) {
+      setSelectComplexity(id);
+    } else {
+      setSelectComplexity("");
+    }
+  };
 
-  const arr4 = ["Изученные", "Не изученные", "Все"];
   return (
     <div className={styles.wrapper}>
-      <Search placeholder="Введите запрос..." />
+      <Search
+        placeholder="Введите запрос..."
+        value={search}
+        onChange={(e) => setSearch(e.target.value)}
+      />
 
-      <CategoryBlock title={"Специализация"} arr={arr} isLong={true} />
+      <CategoryBlock
+        selectedCategory={selectedSpecialization}
+        selectCategory={setSelectedSpecialization}
+        url="https://api.yeatwork.ru/specializations?page=1"
+        title="Специализация"
+      />
+      <CategoryBlock
+        selectedCategory={selectSkill}
+        selectCategory={setSelectSkill}
+        url={`https://api.yeatwork.ru/skills?specializations=${selectedSpecialization}&page=1`}
+        title="Выберите навык"
+      />
 
-      <CategoryBlock title={"Навыки"} arr={arr1} isLong={true} />
+      <CategoryBlock
+        selectedCategory={selectComplexity}
+        selectCategory={toggleCategory1}
+        title={"Уровень сложности"}
+        arr={complexity}
+      />
 
-      <CategoryBlock title={"Уровень сложности"} arr={arr2} />
+      <CategoryBlock
+        selectedCategory={selectRating}
+        selectCategory={toggleCategory}
+        title={"Рейтинг"}
+        arr={rating}
+      />
 
-      <CategoryBlock title={"Рейтинг"} arr={arr3} />
-
-      <CategoryBlock title={"Статус"} arr={arr4} />
+      {/* <CategoryBlock title={"Статус"} arr={state} /> */}
     </div>
   );
 };
