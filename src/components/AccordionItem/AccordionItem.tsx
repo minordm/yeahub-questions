@@ -5,6 +5,8 @@ import { FaChevronDown } from "react-icons/fa6";
 import styles from "./AccordionItem.module.css";
 import type { IQuestionProps } from "./AccordionButton";
 import { HtmlRenderer } from "../HtmlRenderer/HtmlRenderer";
+import { useNavigate } from "react-router";
+import QuestionProperty from "../../shared/QuestionProperty/QuestionProperty";
 
 interface IAccordionItemProps {
   height: number;
@@ -28,6 +30,7 @@ const AccordionItem: FC<IAccordionItemProps & IQuestionProps> = ({
   shortAnswer,
   id,
 }) => {
+  const navigation = useNavigate();
   return (
     <div className={styles.wrapper}>
       <div className={styles.question} onClick={open}>
@@ -50,32 +53,16 @@ const AccordionItem: FC<IAccordionItemProps & IQuestionProps> = ({
       >
         <div className={styles.action}>
           <div className={styles.setting}>
-            <div className={styles.props}>
-              Рейтинг: <span>{rate}</span>
-            </div>
-            <div className={styles.props}>
-              Сложность:&nbsp;<span>{complexity}</span>
-            </div>
+            <QuestionProperty property="Рейтинг" value={rate} />
+            <QuestionProperty property="Сложность" value={complexity} />
           </div>
-          <button className={styles.close}>
+          <button className={styles.close} onClick={() => navigation(`/${id}`)}>
             <img src="/close.svg" alt="" />
           </button>
         </div>
         <HtmlRenderer html={shortAnswer} />
         {/* {RawHtmlComponent({ htmlString: shortAnswer })} */}
         {/* {parse(shortAnswer)} */}
-        {/* <img src="/example.png" alt="" className={styles["answer-img"]} />
-        <p className={styles.desc}>
-          Virtual DOM (виртуальный DOM) — это программная концепция,
-          используемая в разработке веб-приложений для повышения эффективности
-          обновлений интерфейса. Это представление реального DOM (структуры
-          документа, отображаемого в браузере) в памяти, которое позволяет
-          оптимизировать изменения, минимизируя взаимодействие с реальным DOM,
-          что ускоряет рендеринг и обновление страниц. При изменении данных
-          приложения Virtual DOM сравнивает новое состояние с предыдущим и
-          обновляет только те части реального DOM, которые изменились, вместо
-          перерисовки всего документа.
-        </p> */}
       </div>
     </div>
   );

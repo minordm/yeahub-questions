@@ -29,6 +29,10 @@
 	&:focus {
 		outline: none;
 	}
+
+	&::placeholder {
+		color: #A3A3A3;
+	}
 }
 
 

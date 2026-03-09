@@ -18,9 +18,12 @@
 }
 
 .links {
+	color: #191919;
+	text-decoration: none;
 	font-weight: 500;
 	font-size: 16px;
 	line-height: 140%;
+
 	padding: 6px 10px;
 	border-radius: 12px;
 	cursor: pointer;

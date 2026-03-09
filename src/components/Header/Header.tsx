@@ -1,5 +1,6 @@
 import cn from "classnames";
 import styles from "./Header.module.css";
+import { NavLink } from "react-router";
 
 const Header = () => {
   return (
@@ -7,18 +8,19 @@ const Header = () => {
       <div className={styles.navigation}>
         <img src="/logo.svg" alt="Икнока yeahub" />
         <nav className={styles["navigation-buttons"]}>
-          <a className={cn(styles.links, styles.active)}>
+          <NavLink to={"/"} className={cn(styles.links, styles.active)}>
             <p>База&nbsp;вопросов</p>
-          </a>
-          <a className={styles.links}>
+          </NavLink>
+          <NavLink to={"/"} className={styles.links}>
             <p>Тренажер</p>
-          </a>
-          <a className={styles.links}>
-            <p>Материалы</p>
-          </a>
-          <a className={styles.links}>
+          </NavLink>
+          <NavLink to={"/"} className={styles.links}>
+            {/* <p>Материалы</p> */}
+            <p>Собеседования</p>
+          </NavLink>
+          <NavLink to={"/"} className={styles.links}>
             <p>Навыки&nbsp;(hh)</p>
-          </a>
+          </NavLink>
         </nav>
       </div>
       <div className={styles["auth-buttons"]}>

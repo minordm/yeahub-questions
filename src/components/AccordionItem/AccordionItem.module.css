@@ -59,22 +59,6 @@
 	align-items: center;
 }
 
-.props {
-	padding: 6px 10px;
-	border-radius: 8px;
-	background: #F8F8F8;
-	font-size: 14px;
-	line-height: 1.2;
-	font-weight: 600;
-
-	& span {
-		padding: 2px 4px;
-		border-radius: 4px;
-		background: #6A0BFF;
-		color: var(--text-secondary-color);
-	}
-}
-
 .close {
 	width: 35px;
 	height: 35px;

@@ -1,0 +1,34 @@
+.category {
+	font-size: 16px;
+	font-weight: 500;
+	line-height: 1.2;
+	color: #303030;
+	padding: 6px 12px;
+	border: 1px solid #BABABA;
+	background: none;
+	border-radius: 12px;
+	width: fit-content;
+	cursor: pointer;
+	transition: background .2s, color .2s, border-color .2s;
+	display: flex;
+
+	&:hover {
+		color: var(--text-secondary-color);
+		border-color: #6A0BFF;
+		background: #6A0BFF;
+	}
+
+	&.active {
+		border: 1px solid #6A0BFF;
+	}
+}
+
+.icon {
+	/* background: none; */
+	display: flex;
+
+	& img {
+		width: 20px;
+		height: 20px;
+	}
+}
