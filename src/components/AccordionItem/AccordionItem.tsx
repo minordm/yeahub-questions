@@ -1,14 +1,15 @@
-import type { FC, Ref } from "react";
+import type { Ref } from "react";
 
 import cn from "classnames";
 import { FaChevronDown } from "react-icons/fa6";
-import styles from "./AccordionItem.module.css";
-import type { IQuestionProps } from "./AccordionButton";
+// import type { IQuestionProps } from "./AccordionButton";
 import { HtmlRenderer } from "../HtmlRenderer/HtmlRenderer";
 import { useNavigate } from "react-router";
 import QuestionProperty from "../../shared/QuestionProperty/QuestionProperty";
 
-interface IAccordionItemProps {
+import styles from "./AccordionItem.module.css";
+import type { TQuestionProps } from "./AccordionButton";
+interface IAccordionItemProps extends TQuestionProps {
   height: number;
   ref: Ref<HTMLDivElement> | null;
   isOpen: boolean;
@@ -19,7 +20,7 @@ interface IAccordionItemProps {
 //   return <div dangerouslySetInnerHTML={{ __html: htmlString }} />;
 // }
 
-const AccordionItem: FC<IAccordionItemProps & IQuestionProps> = ({
+const AccordionItem = ({
   isOpen,
   open,
   ref,
@@ -29,7 +30,7 @@ const AccordionItem: FC<IAccordionItemProps & IQuestionProps> = ({
   complexity,
   shortAnswer,
   id,
-}) => {
+}: IAccordionItemProps) => {
   const navigation = useNavigate();
   return (
     <div className={styles.wrapper}>

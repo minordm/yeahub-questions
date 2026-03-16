@@ -27,5 +27,5 @@ export const HtmlRenderer = ({ html }: Props) => {
     },
   };
 
-  return <div>{parse(cleanHtml, options)}</div>;
+  return parse(cleanHtml, options);
 };

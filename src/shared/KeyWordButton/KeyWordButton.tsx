@@ -1,9 +1,16 @@
-import { type PropsWithChildren } from "react";
-
+import type { ButtonHTMLAttributes } from "react";
 import styles from "./KeyWordButton.module.css";
 
-const KeyWordButton = ({ children }: PropsWithChildren) => {
-  return <button className={styles.words}>#{children}</button>;
+type KeyWordButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
+  title: string;
+};
+
+const KeyWordButton = ({ title, ...props }: KeyWordButtonProps) => {
+  return (
+    <button className={styles.words} {...props}>
+      #{title}
+    </button>
+  );
 };
 
 export default KeyWordButton;

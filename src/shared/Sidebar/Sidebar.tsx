@@ -1,45 +1,29 @@
-import { createContext, /*useContext,*/ type PropsWithChildren } from "react";
+import { type PropsWithChildren } from "react";
 
 import styles from "./Sidebar.module.css";
+import { SidebarContext, type SidebarContextProps } from "./context";
 
-type SidebarContextProps = {
-  text: string;
-};
+type SidebarBlockProps = PropsWithChildren & SidebarContextProps;
 
-type SidebarProps = PropsWithChildren & {
-  text: string;
-};
-
-const SidebarContext = createContext<SidebarContextProps | undefined>(
-  undefined,
-);
-
-// function useSidebarContext() {
-//   const context = useContext(SidebarContext);
-
-//   if (!context) {
-//     throw new Error("not context");
-//   }
-//   return context;
-// }
-
-const Sidebar = ({ text, children }: SidebarProps) => {
-  return (
-    <SidebarContext.Provider value={{ text }}>
-      <div className={styles.sidebar}>{children}</div>
-    </SidebarContext.Provider>
-  );
+const Sidebar = ({ children }: PropsWithChildren) => {
+  return <div className={styles.sidebar}>{children}</div>;
 };
 
 export default Sidebar;
 
-Sidebar.Block = function FormBlock({ children }: PropsWithChildren) {
-  //   const { text } = useSidebarContext();
-  return <div className={styles.block}>{children}</div>;
+Sidebar.Block = function FormBlock({
+  text,
+  skill,
+  children,
+}: SidebarBlockProps) {
+  return (
+    <SidebarContext.Provider value={{ text, skill }}>
+      <div className={styles.block}>{children}</div>
+    </SidebarContext.Provider>
+  );
 };
 
 Sidebar.Title = function SidebarTitle({ children }: PropsWithChildren) {
-  //   const { text } = useSidebarContext();
   return <h3 className={styles.title}>{children}:</h3>;
 };
 
@@ -47,6 +31,7 @@ Sidebar.Skill = function SidebarSkill({ children }: PropsWithChildren) {
   return <ul className={styles.skills}>{children}</ul>;
 };
 
+// сделать кнопку показать/скрыть
 // Sidebar.Button = function SidebarButton() { // show more
 
 // }

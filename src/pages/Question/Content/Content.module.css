@@ -97,6 +97,11 @@
 	}
 }
 
+.long {
+	width: 804px;
+	box-sizing: border-box;
+}
+
 .long-answer {
 	position: relative;
 	overflow: hidden;

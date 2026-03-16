@@ -1,18 +1,19 @@
 import { useLayoutEffect, useRef, useState } from "react";
 import AccordionItem from "./AccordionItem";
+import type { IQuestion } from "../../types/question";
 
-export interface IQuestionProps {
-  description: string;
-  id: number;
-  keywords: string[];
-  longAnswer: string;
-  rate: number;
-  shortAnswer: string;
-  title: string;
-  complexity: number;
-}
+export type TQuestionProps = Pick<
+  IQuestion,
+  "title" | "rate" | "complexity" | "shortAnswer" | "id"
+>;
 
-const AccordionButton = ({ title, rate, complexity, shortAnswer, id }) => {
+const AccordionButton = ({
+  title,
+  rate,
+  complexity,
+  shortAnswer,
+  id,
+}: TQuestionProps) => {
   const [height, setHeight] = useState(0);
   const [isOpen, setIsOpen] = useState(false);
   const answerRef = useRef<HTMLDivElement>(null);

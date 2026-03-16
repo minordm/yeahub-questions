@@ -12,6 +12,10 @@
 	align-items: center;
 }
 
+.logo {
+	cursor: pointer;
+}
+
 .navigation-buttons {
 	display: flex;
 	gap: 20px;
