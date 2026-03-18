@@ -1,9 +1,9 @@
 import { createContext, useContext } from "react";
-import type { TQuestionKey } from "../../app/redux/question/slice";
+import type { TQuestionFiltersKey } from "../../app/redux/questionFilters/slice";
 
 export type SidebarContextProps = {
   text: string;
-  skill: TQuestionKey;
+  skill: TQuestionFiltersKey;
 };
 
 export const SidebarContext = createContext<SidebarContextProps | undefined>(

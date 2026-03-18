@@ -1,10 +1,19 @@
 import { useLayoutEffect, useRef, useState } from "react";
 import AccordionItem from "./AccordionItem";
 import type { IQuestion } from "../../types/question";
+import { useNavigate } from "react-router";
+import { useAppDispatch } from "../../app/redux/root";
+import { questionDetailActions } from "../../app/redux/questionDetail/slice";
 
 export type TQuestionProps = Pick<
   IQuestion,
-  "title" | "rate" | "complexity" | "shortAnswer" | "id"
+  | "title"
+  | "rate"
+  | "complexity"
+  | "shortAnswer"
+  | "id"
+  | "questionSkills"
+  | "keywords"
 >;
 
 const AccordionButton = ({
@@ -12,11 +21,16 @@ const AccordionButton = ({
   rate,
   complexity,
   shortAnswer,
+  questionSkills,
+  keywords,
   id,
 }: TQuestionProps) => {
   const [height, setHeight] = useState(0);
   const [isOpen, setIsOpen] = useState(false);
   const answerRef = useRef<HTMLDivElement>(null);
+  const dispatch = useAppDispatch();
+
+  const navigation = useNavigate();
 
   const handleOpen = () => {
     setIsOpen((prev) => !prev);
@@ -30,6 +44,18 @@ const AccordionButton = ({
     }
   }, [isOpen]);
 
+  const handleNavigate = () => {
+    dispatch(
+      questionDetailActions.setDetail({
+        keywords: keywords,
+        complexity: complexity,
+        rate: rate,
+        skills: questionSkills,
+      }),
+    );
+    navigation(`/${id}`);
+  };
+
   return (
     <AccordionItem
       isOpen={isOpen}
@@ -40,7 +66,7 @@ const AccordionButton = ({
       rate={rate}
       complexity={complexity}
       shortAnswer={shortAnswer}
-      id={id}
+      onNavigate={handleNavigate}
     />
   );
 };

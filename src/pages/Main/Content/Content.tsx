@@ -1,23 +1,24 @@
 import AccordionButton from "../../../components/AccordionItem/AccordionButton";
 import styles from "./Content.module.css";
-import PaginationButton from "../../../components/Pagination/PaginationButton";
+import PaginationButton from "../../../shared/Pagination/PaginationButton";
 import NotFound from "../../../components/NotFound/NotFound";
-import { useGetQuestionsQuery } from "../../../app/redux/question/api";
+import { useGetQuestionsQuery } from "../../../app/redux/questionFilters/api";
 import { useAppSelector } from "../../../app/redux/root";
 import { useDispatch } from "react-redux";
-import { questionActions } from "../../../app/redux/question/slice";
-// import { useLocation } from "react-router";
+import { questionFiltersActions } from "../../../app/redux/questionFilters/slice";
 
 const Content = () => {
   const dispatch = useDispatch();
-  const curPage = useAppSelector((state) => state.question.page);
-  const search = useAppSelector((state) => state.question.search);
-  const complexity = useAppSelector((state) => state.question.complexity);
-  const rate = useAppSelector((state) => state.question.rate);
-  const specializationId = useAppSelector(
-    (state) => state.question.specializationId,
+  const curPage = useAppSelector((state) => state.questionFilters.page);
+  const search = useAppSelector((state) => state.questionFilters.search);
+  const complexity = useAppSelector(
+    (state) => state.questionFilters.complexity,
   );
-  // const { state: keyword } = useLocation();
+  const rate = useAppSelector((state) => state.questionFilters.rate);
+  const specializationId = useAppSelector(
+    (state) => state.questionFilters.specializationId,
+  );
+  const skills = useAppSelector((state) => state.questionFilters.skill);
 
   const {
     data: question,
@@ -29,11 +30,11 @@ const Content = () => {
     complexity,
     rate,
     specializationId,
-    // keyword: keyword ?? "",
+    skills,
   });
 
   const handleResetSearch = () => {
-    dispatch(questionActions.reset());
+    dispatch(questionFiltersActions.reset());
   };
 
   if (error) return <p>Ошибка</p>;
@@ -51,8 +52,7 @@ const Content = () => {
           {isLoading ? (
             <>Загрузка...</>
           ) : question?.data.length ? (
-            // question?.data.map((question: IQuestionRequest) => (
-            question?.data.map((question) => (
+            question.data.map((question) => (
               <AccordionButton key={question.id} {...question} />
             ))
           ) : (
@@ -60,7 +60,7 @@ const Content = () => {
           )}
         </div>
       </div>
-      {question?.data.length > 0 && (
+      {!isLoading && question?.data && question.data.length > 0 && (
         <PaginationButton
           pageCount={Math.ceil(question.total / question.limit)}
         />

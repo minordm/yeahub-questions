@@ -2,18 +2,20 @@ import type { Ref } from "react";
 
 import cn from "classnames";
 import { FaChevronDown } from "react-icons/fa6";
-// import type { IQuestionProps } from "./AccordionButton";
 import { HtmlRenderer } from "../HtmlRenderer/HtmlRenderer";
-import { useNavigate } from "react-router";
 import QuestionProperty from "../../shared/QuestionProperty/QuestionProperty";
 
 import styles from "./AccordionItem.module.css";
 import type { TQuestionProps } from "./AccordionButton";
-interface IAccordionItemProps extends TQuestionProps {
+interface IAccordionItemProps extends Pick<
+  TQuestionProps,
+  "title" | "rate" | "complexity" | "shortAnswer"
+> {
   height: number;
   ref: Ref<HTMLDivElement> | null;
   isOpen: boolean;
   open: () => void;
+  onNavigate: () => void;
 }
 
 // function RawHtmlComponent({ htmlString }: { htmlString: string }) {
@@ -29,9 +31,8 @@ const AccordionItem = ({
   rate,
   complexity,
   shortAnswer,
-  id,
+  onNavigate,
 }: IAccordionItemProps) => {
-  const navigation = useNavigate();
   return (
     <div className={styles.wrapper}>
       <div className={styles.question} onClick={open}>
@@ -57,7 +58,7 @@ const AccordionItem = ({
             <QuestionProperty property="Рейтинг" value={rate} />
             <QuestionProperty property="Сложность" value={complexity} />
           </div>
-          <button className={styles.close} onClick={() => navigation(`/${id}`)}>
+          <button className={styles.close} onClick={onNavigate}>
             <img src="/close.svg" alt="" />
           </button>
         </div>

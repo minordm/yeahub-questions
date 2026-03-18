@@ -1,7 +1,7 @@
 import { useState, type FC } from "react";
 import Pagination from "./Pagination";
 import { useAppDispatch } from "../../app/redux/root";
-import { questionActions } from "../../app/redux/question/slice";
+import { questionFiltersActions } from "../../app/redux/questionFilters/slice";
 
 interface IPaginationButtonProps {
   pageCount: number;
@@ -13,7 +13,7 @@ const PaginationButton: FC<IPaginationButtonProps> = ({ pageCount }) => {
 
   const setPage = (numberPage: number) => {
     setCurPage(numberPage);
-    dispatch(questionActions.updatePage(numberPage));
+    dispatch(questionFiltersActions.updatePage(numberPage));
   };
 
   return <Pagination pageCount={pageCount} setPage={setPage} />;

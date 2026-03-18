@@ -1,6 +1,6 @@
 import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
 
-interface IQuestionState {
+interface IQuestionFiltersState {
   search: string;
   complexity: string;
   rate: string;
@@ -8,26 +8,14 @@ interface IQuestionState {
   page: number;
   limit: number;
   specializationId: number;
-  //
-  complexityQuestion: number;
-  rateQuestion: number;
-  skillsQuestion: any[];
-  keywordsQuestion: string[];
 }
 
-export type TQuestionKey = Extract<
-  keyof IQuestionState,
-  | "complexity"
-  | "rate"
-  | "skill"
-  | "specializationId"
-  | "complexityQuestion"
-  | "rateQuestion"
-  | "skillsQuestion"
-  | "keywordsQuestion"
+export type TQuestionFiltersKey = Extract<
+  keyof IQuestionFiltersState,
+  "complexity" | "rate" | "skill" | "specializationId"
 >;
 
-const initialState: IQuestionState = {
+const initialState: IQuestionFiltersState = {
   search: "",
   complexity: "",
   rate: "",
@@ -35,15 +23,10 @@ const initialState: IQuestionState = {
   page: 1,
   limit: 10,
   specializationId: 11,
-  //
-  complexityQuestion: 0,
-  rateQuestion: 0,
-  skillsQuestion: [],
-  keywordsQuestion: [""],
 };
 
-export const question = createSlice({
-  name: "question",
+export const questionFilters = createSlice({
+  name: "questionFilters",
   initialState,
   reducers: {
     reset: () => {
@@ -58,7 +41,7 @@ export const question = createSlice({
     updateSpecialization: (
       state,
       action: PayloadAction<{
-        key: TQuestionKey;
+        key: TQuestionFiltersKey;
         value: string | number;
       }>,
     ) => {
@@ -73,5 +56,5 @@ export const question = createSlice({
   },
 });
 
-export default question.reducer;
-export const questionActions = question.actions;
+export default questionFilters.reducer;
+export const questionFiltersActions = questionFilters.actions;

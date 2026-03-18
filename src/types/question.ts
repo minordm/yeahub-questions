@@ -1,25 +1,23 @@
-import type { TDate } from "./common";
-
 export interface ICategory {
-  createdAt: TDate;
-  createdBy: TDate | null;
+  createdAt: string;
+  createdBy: string | null;
   description: string;
   id: number;
   imageSrc: string | null;
   slug: string; // тег
   title: string;
-  updatedAt: TDate;
+  updatedAt: string;
 }
 
 export interface IQuestion {
   code: null;
   complexity: number;
-  createdAt: TDate;
+  createdAt: string;
   createdBy: {
-    id: string; // одинаковые с createdById
+    id: string;
     username: string;
   };
-  createdById: string; // одинаковые с createdBy: id
+  createdById: string;
   description: string;
   id: number;
   imageSrc: string | null;
@@ -27,13 +25,13 @@ export interface IQuestion {
   longAnswer: string;
   questionSkills: ICategory[];
   questionSpecializations: ICategory[];
-  questionTopics: any[];
+  questionTopics: [];
   rate: number;
   shortAnswer: string;
   slug: string; // тег
   status: "public" | "private";
   title: string;
-  updatedAt: TDate;
+  updatedAt: string;
   updatedBy: {
     id: string;
     username: string;

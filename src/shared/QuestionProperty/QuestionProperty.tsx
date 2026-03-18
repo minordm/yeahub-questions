@@ -2,7 +2,7 @@ import styles from "./QuestionProperty.module.css";
 
 interface QuestionPropertyProps {
   property: string;
-  value: string;
+  value: string | number;
 }
 
 const QuestionProperty = ({ property, value }: QuestionPropertyProps) => {

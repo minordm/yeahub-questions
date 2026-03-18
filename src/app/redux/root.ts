@@ -1,12 +1,14 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { useDispatch, useSelector } from "react-redux";
-import question from "./question/slice";
-import { questionApi } from "./question/api";
+import questionFilters from "./questionFilters/slice";
+import questionDetail from "./questionDetail/slice";
+import { questionApi } from "./questionFilters/api";
 import { categoryApi } from "./category/api";
 
 export const store = configureStore({
   reducer: {
-    question,
+    questionFilters,
+    questionDetail,
     [questionApi.reducerPath]: questionApi.reducer,
     [categoryApi.reducerPath]: categoryApi.reducer,
   },

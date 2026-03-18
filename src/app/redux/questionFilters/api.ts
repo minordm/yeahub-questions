@@ -10,25 +10,18 @@ export const questionApi = createApi({
   }),
   endpoints: (build) => ({
     getQuestions: build.query<
-      IQuestion,
+      { data: IQuestion[]; page: number; total: number; limit: number },
       {
         page?: number;
         title?: string;
         complexity?: string;
         rate?: string;
-        keyword?: string;
         specializationId: number;
+        skills?: number | null;
       }
     >({
-      query: ({
-        page,
-        title,
-        complexity,
-        rate,
-        keyword,
-        specializationId,
-      }) => ({
-        url: `/?${complexity ? `&complexity=${complexity}` : ""}${rate ? `&rate=${rate}` : ""}${keyword ? `&titleOrDescription=${keyword}` : ""}`,
+      query: ({ page, title, complexity, rate, specializationId, skills }) => ({
+        url: `/?${complexity ? `&complexity=${complexity}` : ""}${rate ? `&rate=${rate}` : ""}${skills ? `&skills=${skills}` : ""}`,
         params: {
           page,
           title,
