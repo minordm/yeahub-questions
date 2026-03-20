@@ -1,9 +1,12 @@
-import { type PropsWithChildren } from "react";
+import { type ButtonHTMLAttributes, type PropsWithChildren } from "react";
 
 import styles from "./Sidebar.module.css";
-import { SidebarContext, type SidebarContextProps } from "./context";
+import { SidebarContext, type TSidebarContextProps } from "./context";
 
-type SidebarBlockProps = PropsWithChildren & SidebarContextProps;
+type TSidebarBlockProps = PropsWithChildren & TSidebarContextProps;
+
+type TSidebarButtonProps = ButtonHTMLAttributes<HTMLButtonElement> &
+  PropsWithChildren;
 
 const Sidebar = ({ children }: PropsWithChildren) => {
   return <div className={styles.sidebar}>{children}</div>;
@@ -15,7 +18,7 @@ Sidebar.Block = function FormBlock({
   text,
   skill,
   children,
-}: SidebarBlockProps) {
+}: TSidebarBlockProps) {
   return (
     <SidebarContext.Provider value={{ text, skill }}>
       <div className={styles.block}>{children}</div>
@@ -31,7 +34,13 @@ Sidebar.Skill = function SidebarSkill({ children }: PropsWithChildren) {
   return <ul className={styles.skills}>{children}</ul>;
 };
 
-// сделать кнопку показать/скрыть
-// Sidebar.Button = function SidebarButton() { // show more
-
-// }
+Sidebar.Button = function SidebarButton({
+  children,
+  ...props
+}: TSidebarButtonProps) {
+  return (
+    <button className={styles.button} {...props}>
+      {children}
+    </button>
+  );
+};

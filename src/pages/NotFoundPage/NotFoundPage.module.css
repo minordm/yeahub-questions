@@ -1,0 +1,36 @@
+.not-found {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	gap: 10px;
+	width: 100vw;
+	height: 100vh;
+	transform: translateY(-5%);
+}
+
+.title {
+	font-size: 30px;
+	line-height: 1.15;
+	font-weight: 700;
+}
+
+.button {
+	font-size: 20px;
+
+	background: var(--primary-color);
+	color: var(--text-secondary-color);
+	padding: 12px 29px;
+	border: none;
+	border-radius: 10px;
+	cursor: pointer;
+	transition: background .3s;
+
+	&:hover {
+		background: #5509cc;
+	}
+
+	&:active {
+		background: #400799;
+	}
+}

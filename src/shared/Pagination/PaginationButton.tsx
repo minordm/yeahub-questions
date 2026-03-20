@@ -1,5 +1,5 @@
 import { useState, type FC } from "react";
-import Pagination from "./Pagination";
+import Pagination from "./ui/Pagination";
 import { useAppDispatch } from "../../app/redux/root";
 import { questionFiltersActions } from "../../app/redux/questionFilters/slice";
 

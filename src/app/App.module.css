@@ -1,6 +1,32 @@
+.main {
+	display: flex;
+	justify-content: center;
+	padding: 0;
+}
+
 .wrapper {
-	padding: 0 112px;
+	width: 100%;
+	max-width: 1216px;
+	position: relative;
 	display: flex;
 	flex-direction: row;
 	gap: 20px;
+}
+
+@media (max-width: 1439px) {
+	.main {
+		padding: 0 60px;
+	}
+}
+
+@media (max-width: 1199px) {
+	.main {
+		padding: 0 30px;
+	}
+}
+
+@media (max-width: 767px) {
+	.main {
+		padding: 0 5px;
+	}
 }

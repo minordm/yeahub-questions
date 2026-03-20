@@ -16,9 +16,15 @@ const Info = () => {
         </div>
       </div>
       <div className={styles.socials}>
-        <img src="/tg-icon.svg" alt="" />
-        <img src="/yt-icon.svg" alt="" />
-        <img src="/profile-icon.svg" alt="" />
+        <a href="https://t.me/reactify_IT" target="_blank">
+          <img src="/tg-icon.svg" alt="иконка телеграма" />
+        </a>
+        <a href="https://www.youtube.com/@reactify-it" target="_blank">
+          <img src="/yt-icon.svg" alt="иконка ютюба" />
+        </a>
+        <a href="https://reactify.ru/" target="_blank">
+          <img src="/profile-icon.svg" alt="иконка профиля" />
+        </a>
       </div>
     </div>
   );

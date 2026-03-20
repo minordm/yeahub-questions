@@ -18,10 +18,6 @@ interface IAccordionItemProps extends Pick<
   onNavigate: () => void;
 }
 
-// function RawHtmlComponent({ htmlString }: { htmlString: string }) {
-//   return <div dangerouslySetInnerHTML={{ __html: htmlString }} />;
-// }
-
 const AccordionItem = ({
   isOpen,
   open,
@@ -36,10 +32,7 @@ const AccordionItem = ({
   return (
     <div className={styles.wrapper}>
       <div className={styles.question} onClick={open}>
-        <h2>
-          <img src="/ball.svg" alt="" />
-          {title}
-        </h2>
+        <h2 className={styles.title}>{title}</h2>
         <FaChevronDown
           className={cn(styles["show-button"], {
             [styles.active]: isOpen,
@@ -54,17 +47,13 @@ const AccordionItem = ({
         })}
       >
         <div className={styles.action}>
-          <div className={styles.setting}>
-            <QuestionProperty property="Рейтинг" value={rate} />
-            <QuestionProperty property="Сложность" value={complexity} />
-          </div>
-          <button className={styles.close} onClick={onNavigate}>
-            <img src="/close.svg" alt="" />
-          </button>
+          <QuestionProperty property="Рейтинг" value={rate} />
+          <QuestionProperty property="Сложность" value={complexity} />
         </div>
         <HtmlRenderer html={shortAnswer} />
-        {/* {RawHtmlComponent({ htmlString: shortAnswer })} */}
-        {/* {parse(shortAnswer)} */}
+        <button className={styles.close} onClick={onNavigate}>
+          Подробнее
+        </button>
       </div>
     </div>
   );

@@ -1,19 +1,16 @@
 import { useLayoutEffect, useRef, useState } from "react";
-import { useParams } from "react-router";
 import QuestionContent from "./ui";
-import { useGetQuestionByIdQuery } from "../../../app/redux/questionFilters/api";
+import type { IQuestion } from "../../../types/question";
+interface IQuestionProps {
+  question?: IQuestion;
+  isLoading: boolean;
+  setOpen: (value: boolean) => void;
+}
 
-const Content = () => {
-  const { id } = useParams();
+const Content = ({ question, isLoading, setOpen }: IQuestionProps) => {
   const [height, setHeight] = useState(140);
   const [isOpen, setIsOpen] = useState(false);
   const answerRef = useRef<HTMLDivElement>(null);
-
-  const {
-    data: question,
-    isError,
-    isLoading,
-  } = useGetQuestionByIdQuery(Number(id));
 
   const handleOpen = () => setIsOpen((prev) => !prev);
 
@@ -25,22 +22,19 @@ const Content = () => {
     }
   }, [isOpen]);
 
-  if (isLoading) return <p>Загрузка</p>;
-  if (isError) return <p>Ошибка</p>;
-
-  return question ? (
+  return (
     <QuestionContent
+      showModal={() => setOpen(true)}
+      isLoading={isLoading}
       answerRef={answerRef}
-      description={question.description}
+      description={question?.description}
       height={height}
-      longAnswer={question.longAnswer}
-      shortAnswer={question.shortAnswer}
-      title={question.title}
+      longAnswer={question?.longAnswer}
+      shortAnswer={question?.shortAnswer}
+      title={question?.title}
       handleOpen={handleOpen}
       isOpen={isOpen}
     />
-  ) : (
-    <>Ничего нет</>
   );
 };
 

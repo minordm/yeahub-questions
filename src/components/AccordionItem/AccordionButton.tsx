@@ -2,8 +2,6 @@ import { useLayoutEffect, useRef, useState } from "react";
 import AccordionItem from "./AccordionItem";
 import type { IQuestion } from "../../types/question";
 import { useNavigate } from "react-router";
-import { useAppDispatch } from "../../app/redux/root";
-import { questionDetailActions } from "../../app/redux/questionDetail/slice";
 
 export type TQuestionProps = Pick<
   IQuestion,
@@ -21,14 +19,11 @@ const AccordionButton = ({
   rate,
   complexity,
   shortAnswer,
-  questionSkills,
-  keywords,
   id,
 }: TQuestionProps) => {
   const [height, setHeight] = useState(0);
   const [isOpen, setIsOpen] = useState(false);
   const answerRef = useRef<HTMLDivElement>(null);
-  const dispatch = useAppDispatch();
 
   const navigation = useNavigate();
 
@@ -38,21 +33,14 @@ const AccordionButton = ({
 
   useLayoutEffect(() => {
     if (isOpen && answerRef.current) {
-      setHeight(answerRef.current.scrollHeight);
+      setHeight(answerRef.current.scrollHeight - 24);
     } else {
       setHeight(0);
     }
   }, [isOpen]);
 
   const handleNavigate = () => {
-    dispatch(
-      questionDetailActions.setDetail({
-        keywords: keywords,
-        complexity: complexity,
-        rate: rate,
-        skills: questionSkills,
-      }),
-    );
+    window.scrollTo(0, 0);
     navigation(`/${id}`);
   };
 

@@ -8,9 +8,11 @@ function App() {
   return (
     <>
       <Header />
-      <div className={styles.wrapper}>
-        <Outlet />
-      </div>
+      <main className={styles.main}>
+        <div className={styles.wrapper}>
+          <Outlet />
+        </div>
+      </main>
       <Footer />
     </>
   );

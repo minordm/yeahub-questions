@@ -8,13 +8,19 @@ import {
   questionFiltersActions,
   type TQuestionFiltersKey,
 } from "../../../app/redux/questionFilters/slice";
+import Skeleton from "../../../shared/Skeleton/Skeleton";
 
-export interface ICategoryProp {
+interface ICategoryProp {
   id: string;
   title: string;
 }
 
-const SidebarMain = () => {
+interface IToggleShowMoreCategoriesProps {
+  cb: React.Dispatch<React.SetStateAction<number>>;
+  totalCategories: number;
+}
+
+const SidebarMain = ({ closeModal }: { closeModal?: () => void }) => {
   const specializationId = useAppSelector(
     (state) => state.questionFilters.specializationId,
   );
@@ -62,11 +68,11 @@ const SidebarMain = () => {
     limit: skillLimit,
   });
 
-  const toggleMoreCategories = () => {
-    setSpecLimit((prevState) => (prevState <= 5 ? (spec?.total ?? 5) : 5));
-  };
-  const toggleMoreCategories1 = () => {
-    setSkillLimit((prevState) => (prevState <= 5 ? (skills?.total ?? 5) : 5));
+  const toggleMoreCategories = ({
+    cb,
+    totalCategories,
+  }: IToggleShowMoreCategoriesProps) => {
+    cb((prevState) => (prevState <= 5 ? totalCategories : 5));
   };
 
   const selectCategory = ({
@@ -79,11 +85,8 @@ const SidebarMain = () => {
     dispatch(questionFiltersActions.updateSpecialization({ key, value }));
   };
 
-  if (errorSpec) return <>Ошибка</>;
-  if (isLoadingSpec) return <>Загрузка</>;
-
-  if (errorSkills) return <>Ошибка</>;
-  if (isLoadingSkills) return <>Загрузка</>;
+  if (errorSpec) return <p>Не удалось загрузить специальности</p>;
+  if (errorSkills) return <p>Не удалось загрузить скиллы</p>;
 
   return (
     <Sidebar>
@@ -92,40 +95,84 @@ const SidebarMain = () => {
       <Sidebar.Block text="Специализация" skill="specializationId">
         <Sidebar.Title>Специализация</Sidebar.Title>
         <Sidebar.Skill>
-          {spec?.data.map((specialization) => (
-            <CategoryItem
-              title={specialization.title}
-              key={specialization.id}
-              isActive={specializationId === specialization.id}
-              onClick={() => {
-                dispatch(questionFiltersActions.reset());
-                selectCategory({
-                  key: "specializationId",
-                  value: specialization.id,
-                });
-              }}
-            />
-          ))}
+          {isLoadingSpec
+            ? [...new Array(5)].map((_, index) => (
+                <Skeleton
+                  borderRadius={12}
+                  heightSvg={26}
+                  widthSvg={200}
+                  width={200}
+                  height={26}
+                  key={index}
+                />
+              ))
+            : spec?.data.map((specialization) => (
+                <CategoryItem
+                  title={specialization.title}
+                  key={specialization.id}
+                  isActive={specializationId === specialization.id}
+                  onClick={() => {
+                    dispatch(questionFiltersActions.reset());
+                    if (closeModal) {
+                      closeModal();
+                    }
+                    selectCategory({
+                      key: "specializationId",
+                      value: specialization.id,
+                    });
+                  }}
+                />
+              ))}
         </Sidebar.Skill>
-        {(spec?.total ?? 0) > 5 && (
-          <button onClick={toggleMoreCategories}>Показать / скрыть</button>
-        )}
+        <Sidebar.Button
+          onClick={() =>
+            toggleMoreCategories({
+              cb: setSpecLimit,
+              totalCategories: spec?.total ?? 5,
+            })
+          }
+        >
+          {specLimit > 5 ? "Скрыть" : "Посмотреть все"}
+        </Sidebar.Button>
       </Sidebar.Block>
       <Sidebar.Block text="Навыки" skill="skill">
         <Sidebar.Title>Навыки</Sidebar.Title>
         <Sidebar.Skill>
-          {skills?.data.map((skill) => (
-            <CategoryItem
-              title={skill.title}
-              key={skill.id}
-              isActive={skillId === skill.id}
-              onClick={() => selectCategory({ key: "skill", value: skill.id })}
-            />
-          ))}
+          {isLoadingSkills
+            ? [...new Array(5)].map((_, index) => (
+                <Skeleton
+                  borderRadius={12}
+                  heightSvg={26}
+                  widthSvg={200}
+                  width={200}
+                  height={26}
+                  key={index}
+                />
+              ))
+            : skills?.data.map((skill) => (
+                <CategoryItem
+                  title={skill.title}
+                  key={skill.id}
+                  isActive={skillId === skill.id}
+                  onClick={() => {
+                    if (closeModal) {
+                      closeModal();
+                    }
+                    selectCategory({ key: "skill", value: skill.id });
+                  }}
+                />
+              ))}
         </Sidebar.Skill>
-        {(skills?.total ?? 0) > 5 && (
-          <button onClick={toggleMoreCategories1}>Показать / скрыть</button>
-        )}
+        <Sidebar.Button
+          onClick={() =>
+            toggleMoreCategories({
+              cb: setSkillLimit,
+              totalCategories: skills?.total ?? 5,
+            })
+          }
+        >
+          {skillLimit > 5 ? "Скрыть" : "Посмотреть все"}
+        </Sidebar.Button>
       </Sidebar.Block>
       <Sidebar.Block text="Уровень сложности" skill="complexity">
         <Sidebar.Title>Уровень сложности</Sidebar.Title>
@@ -135,9 +182,12 @@ const SidebarMain = () => {
               title={item.title}
               key={item.id}
               isActive={complexityId === item.id}
-              onClick={() =>
-                selectCategory({ key: "complexity", value: item.id })
-              }
+              onClick={() => {
+                if (closeModal) {
+                  closeModal();
+                }
+                selectCategory({ key: "complexity", value: item.id });
+              }}
             />
           ))}
         </Sidebar.Skill>
@@ -150,7 +200,12 @@ const SidebarMain = () => {
               title={item.title}
               key={item.id}
               isActive={rateId === item.id}
-              onClick={() => selectCategory({ key: "rate", value: item.id })}
+              onClick={() => {
+                if (closeModal) {
+                  closeModal();
+                }
+                selectCategory({ key: "rate", value: item.id });
+              }}
             />
           ))}
         </Sidebar.Skill>
