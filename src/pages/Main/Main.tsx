@@ -4,17 +4,14 @@ import SidebarMain from "./Sidebar/Sidebar";
 import { createPortal } from "react-dom";
 
 import styles from "./Main.module.css";
+import useMediaQuery from "../../shared/hooks/useMediaQuery";
 
 const Main = () => {
-  const isMobile = false;
+  const isMobile = useMediaQuery("(max-width: 1023px)");
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
-    if (open) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "";
-    }
+    document.body.style.overflow = open ? "hidden" : "";
 
     return () => {
       document.body.style.overflow = "";

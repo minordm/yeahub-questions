@@ -12,6 +12,7 @@ const PaginationButton: FC<IPaginationButtonProps> = ({ pageCount }) => {
   const dispatch = useAppDispatch();
 
   const setPage = (numberPage: number) => {
+    window.scrollTo(0, 0);
     setCurPage(numberPage);
     dispatch(questionFiltersActions.updatePage(numberPage));
   };

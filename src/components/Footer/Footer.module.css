@@ -79,12 +79,14 @@
 @media (max-width: 1199px) {
 	.footer {
 		padding: 30px 30px 16px 30px;
+		margin-top: 80px;
 	}
 }
 
 @media (max-width: 767px) {
 	.footer {
 		padding: 24px 16px 16px 16px;
+		margin-top: 40px;
 	}
 
 	.foot {

@@ -14,7 +14,7 @@ export const router = createBrowserRouter([
       {
         path: "/collections",
         element: (
-          <div style={{ height: "calc(100vh - 460px)" }}>
+          <div style={{ height: "100vh" }}>
             Страница собеседований в разработке...
           </div>
         ),
@@ -22,7 +22,7 @@ export const router = createBrowserRouter([
       {
         path: "/trainer",
         element: (
-          <div style={{ height: "calc(100vh - 460px)" }}>
+          <div style={{ height: "100vh" }}>
             Страница тренажера в разработке...
           </div>
         ),
@@ -30,7 +30,7 @@ export const router = createBrowserRouter([
       {
         path: "/skills",
         element: (
-          <div style={{ height: "calc(100vh - 460px)" }}>
+          <div style={{ height: "100vh" }}>
             Страница навыков в разработке...
           </div>
         ),
@@ -38,15 +38,13 @@ export const router = createBrowserRouter([
       {
         path: "/login",
         element: (
-          <div style={{ height: "calc(100vh - 460px)" }}>
-            Страница входа в разработке
-          </div>
+          <div style={{ height: "100vh" }}>Страница входа в разработке</div>
         ),
       },
       {
         path: "/registr",
         element: (
-          <div style={{ height: "calc(100vh - 460px)" }}>
+          <div style={{ height: "100vh" }}>
             Страница регистрации в разработке
           </div>
         ),

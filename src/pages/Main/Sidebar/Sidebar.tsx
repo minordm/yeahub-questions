@@ -92,7 +92,7 @@ const SidebarMain = ({ closeModal }: { closeModal?: () => void }) => {
     <Sidebar>
       <SearchInput />
 
-      <Sidebar.Block text="Специализация" skill="specializationId">
+      <Sidebar.Block>
         <Sidebar.Title>Специализация</Sidebar.Title>
         <Sidebar.Skill>
           {isLoadingSpec
@@ -135,7 +135,7 @@ const SidebarMain = ({ closeModal }: { closeModal?: () => void }) => {
           {specLimit > 5 ? "Скрыть" : "Посмотреть все"}
         </Sidebar.Button>
       </Sidebar.Block>
-      <Sidebar.Block text="Навыки" skill="skill">
+      <Sidebar.Block>
         <Sidebar.Title>Навыки</Sidebar.Title>
         <Sidebar.Skill>
           {isLoadingSkills
@@ -174,7 +174,7 @@ const SidebarMain = ({ closeModal }: { closeModal?: () => void }) => {
           {skillLimit > 5 ? "Скрыть" : "Посмотреть все"}
         </Sidebar.Button>
       </Sidebar.Block>
-      <Sidebar.Block text="Уровень сложности" skill="complexity">
+      <Sidebar.Block>
         <Sidebar.Title>Уровень сложности</Sidebar.Title>
         <Sidebar.Skill>
           {complexity.map((item) => (
@@ -192,7 +192,7 @@ const SidebarMain = ({ closeModal }: { closeModal?: () => void }) => {
           ))}
         </Sidebar.Skill>
       </Sidebar.Block>
-      <Sidebar.Block text="Рейтинг" skill="rate">
+      <Sidebar.Block>
         <Sidebar.Title>Рейтинг</Sidebar.Title>
         <Sidebar.Skill>
           {rating.map((item) => (

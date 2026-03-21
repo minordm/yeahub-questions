@@ -27,7 +27,7 @@ const SidebarQuestionDetail = ({ question }: ISidebarQuestionDetailProps) => {
   return (
     <div className={styles["sidebar__container"]}>
       <Sidebar>
-        <Sidebar.Block text="Уровень" skill={"rate"}>
+        <Sidebar.Block>
           <Sidebar.Title>Уровень</Sidebar.Title>
           <Sidebar.Skill>
             <QuestionProperty
@@ -37,7 +37,7 @@ const SidebarQuestionDetail = ({ question }: ISidebarQuestionDetailProps) => {
             <QuestionProperty property="Рейтинг" value={question?.rate} />
           </Sidebar.Skill>
         </Sidebar.Block>
-        <Sidebar.Block text="Навыки" skill="skill">
+        <Sidebar.Block>
           <Sidebar.Title>Навыки</Sidebar.Title>
           <Sidebar.Skill>
             {question?.questionSkills.map((skill) => (
@@ -49,7 +49,7 @@ const SidebarQuestionDetail = ({ question }: ISidebarQuestionDetailProps) => {
             ))}
           </Sidebar.Skill>
         </Sidebar.Block>
-        <Sidebar.Block text="Ключевые слова" skill="complexity">
+        <Sidebar.Block>
           <Sidebar.Title>Ключевые слова</Sidebar.Title>
           <Sidebar.Skill>
             {question?.keywords.map((keyword) => (

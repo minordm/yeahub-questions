@@ -15,8 +15,8 @@
 	top: 0;
 	right: 0;
 	overflow: scroll;
-	max-height: calc(100vh - 49px);
-	background-color: #757575;
+	height: 100vh;
+	background-color: white;
 }
 
 .button {

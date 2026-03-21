@@ -6,7 +6,7 @@ const Buttons = ({
   isMobile,
   closeModal,
 }: {
-  isMobile?: boolean;
+  isMobile?: string;
   closeModal?: () => void;
 }) => {
   const navigate = useNavigate();

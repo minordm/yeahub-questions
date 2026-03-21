@@ -34,22 +34,7 @@
 }
 
 .navigation-modal {
-	display: flex;
-	flex-direction: row;
-	align-items: center;
-	gap: 6px;
-	border: none;
-	background-color: transparent;
-
-	font-weight: 500;
-	font-size: 16px;
-	line-height: 140%;
-	color: #191919;
-
-	&::after {
-		content: url();
-	}
-
+	display: none;
 }
 
 .navigation-buttons {
@@ -115,12 +100,8 @@
 	}
 }
 
-
 .modal {
-	position: absolute;
-	top: 49px;
-	left: 0;
-	background-color: #fff;
+	display: none;
 }
 
 .mobile {
@@ -129,11 +110,7 @@
 
 
 .burger-button {
-	display: flex;
-	padding: 0;
-	margin: 0;
-	border: none;
-	background-color: transparent;
+	display: none;
 }
 
 @media (max-width: 1439px) {
@@ -142,9 +119,87 @@
 	}
 }
 
+@media (max-width: 1279px) {
+	.modal {
+		display: flex;
+		flex-direction: column;
+		position: absolute;
+		top: 49px;
+		left: 0;
+		background-color: #fff;
+		border-radius: 8px;
+	}
+
+	.modal-auth-button {
+		border: none;
+		background-color: transparent;
+		padding: 8px;
+
+		text-align: center;
+		font-size: 16px;
+		font-weight: 500;
+		color: #191919;
+		text-decoration: none;
+
+		&.active {
+			border-radius: 8px;
+			background-color: #f8f8f8;
+			color: #5509cc;
+		}
+	}
+
+	.navigation-buttons.mobile {
+		display: flex;
+		gap: 20px;
+	}
+
+	.navigation-buttons {
+		display: none;
+	}
+
+	.navigation-modal {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		gap: 6px;
+		border: none;
+		background-color: transparent;
+
+		font-weight: 500;
+		font-size: 16px;
+		line-height: 140%;
+		color: #191919;
+
+		&::after {
+			content: url();
+		}
+	}
+
+
+}
+
 @media (max-width: 1199px) {
 	.header {
 		padding: 8px 30px;
+	}
+}
+
+@media (max-width: 1023px) {
+	.auth-buttons.mobile {
+		display: flex;
+		gap: 26px;
+	}
+
+	.auth-buttons {
+		display: none;
+	}
+
+	.burger-button {
+		display: flex;
+		padding: 0;
+		margin: 0;
+		border: none;
+		background-color: transparent;
 	}
 }
 

@@ -8,9 +8,10 @@ import { useGetQuestionByIdQuery } from "../../app/redux/questionFilters/api";
 import { useParams } from "react-router";
 import { skipToken } from "@reduxjs/toolkit/query";
 import NotFoundPage from "../NotFoundPage/NotFoundPage";
+import useMediaQuery from "../../shared/hooks/useMediaQuery";
 
 const Question = () => {
-  const isMobile = false;
+  const isMobile = useMediaQuery("(max-width: 1023px)");
   const [open, setOpen] = useState(false);
   const { id } = useParams();
   const {
@@ -20,11 +21,7 @@ const Question = () => {
   } = useGetQuestionByIdQuery(id ? Number(id) : skipToken);
 
   useEffect(() => {
-    if (open) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "";
-    }
+    document.body.style.overflow = open ? "hidden" : "";
 
     return () => {
       document.body.style.overflow = "";

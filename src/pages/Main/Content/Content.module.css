@@ -70,7 +70,7 @@
 	}
 }
 
-@media (max-width: 786px) {
+@media (max-width: 1023px) {
 	.sidebar {
 		display: flex;
 		border: 1px solid #BABABA;
