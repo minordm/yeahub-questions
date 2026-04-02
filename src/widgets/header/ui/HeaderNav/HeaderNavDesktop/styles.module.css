@@ -1,0 +1,47 @@
+.navigation-buttons {
+	display: flex;
+	gap: 20px;
+}
+
+.links {
+	color: #191919;
+	text-decoration: none;
+	font-weight: 500;
+	font-size: 16px;
+	line-height: 140%;
+
+	padding: 6px 10px;
+	border-radius: 12px;
+	cursor: pointer;
+
+	&:hover {
+		background-color: #f8f8f8;
+	}
+
+	& p:hover {
+		color: #5509cc;
+	}
+
+	&.active {
+		background-color: #f8f8f8;
+
+		& p {
+			color: #5509cc;
+		}
+	}
+}
+
+.mobile {
+	flex-direction: column;
+}
+
+@media (max-width: 1279px) {
+	.navigation-buttons {
+		display: none;
+	}
+
+	.navigation-buttons.mobile {
+		display: flex;
+		gap: 20px;
+	}
+}

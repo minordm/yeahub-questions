@@ -1,0 +1,34 @@
+.button {
+	display: inline-flex;
+	align-items: center;
+	border: none;
+	background-color: transparent;
+
+	font-weight: 400;
+	font-size: 16px;
+	color: #6A0BFF;
+
+	cursor: pointer;
+
+	&:hover {
+		text-decoration: underline;
+	}
+}
+
+.big {
+	background: var(--primary-color);
+	color: var(--text-secondary-color);
+	padding: 12px 29px;
+	border: none;
+	border-radius: 10px;
+	cursor: pointer;
+	transition: background .3s;
+
+	&:hover {
+		background: #5509cc;
+	}
+
+	&:active {
+		background: #400799;
+	}
+}

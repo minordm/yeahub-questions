@@ -1,0 +1,15 @@
+.back {
+	border: none;
+	background-color: transparent;
+	padding: 4px;
+	margin-top: -46px;
+
+	font-weight: 500;
+	font-size: 16px;
+	color: #6A0BFF;
+
+	&:hover {
+		color: #400799;
+		text-decoration: underline;
+	}
+}

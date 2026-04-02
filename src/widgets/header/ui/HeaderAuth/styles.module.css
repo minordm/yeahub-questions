@@ -1,0 +1,53 @@
+.modal {
+	display: none;
+}
+
+.burger-button {
+	display: none;
+}
+
+
+@media (max-width: 1279px) {
+	.modal {
+		display: flex;
+		flex-direction: column;
+		position: absolute;
+		top: 49px;
+		left: 0;
+		background-color: #fff;
+		border-radius: 8px;
+	}
+
+	.modal-auth-button {
+		border: none;
+		background-color: transparent;
+		padding: 8px;
+
+		text-align: center;
+		font-size: 16px;
+		font-weight: 500;
+		color: #191919;
+		text-decoration: none;
+
+		&.active {
+			border-radius: 8px;
+			background-color: #f8f8f8;
+			color: #5509cc;
+		}
+	}
+}
+
+@media (max-width: 1023px) {
+	.mobile {
+		display: flex;
+		gap: 26px;
+	}
+
+	.burger-button {
+		display: flex;
+		padding: 0;
+		margin: 0;
+		border: none;
+		background-color: transparent;
+	}
+}

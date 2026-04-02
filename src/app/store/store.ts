@@ -1,6 +1,6 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { questionApi } from "@entities/question";
-import { categoryApi } from "@entities/category";
+import { categoryApi } from "@shared/model/api";
 import { rootReducer } from "./reducer";
 
 export const store = configureStore({

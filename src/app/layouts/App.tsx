@@ -1,11 +1,11 @@
 import { Outlet } from "react-router";
-import Header from "@widgets/header";
-import Footer from "@widgets/footer";
+import Header from "@widgets/Header";
+import Footer from "@widgets/Footer";
 
-import styles from "./styles.module.css";
 import { useState } from "react";
-import { ModalContext } from "@app/providers/ModalContext";
+import { ModalContext } from "@shared/lib/providers/ModalContext";
 import type { TModalState } from "@shared/model/types";
+import styles from "./styles.module.css";
 
 function App() {
   const [open, setOpen] = useState<TModalState>("");
@@ -14,7 +14,7 @@ function App() {
     <ModalContext.Provider value={{ open, setOpen }}>
       <Header />
       <main className={styles.main}>
-        <div className={styles.wrapper}>
+        <div className={styles.container}>
           <Outlet />
         </div>
       </main>

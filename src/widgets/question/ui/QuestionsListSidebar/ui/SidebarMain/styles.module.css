@@ -1,0 +1,12 @@
+.sidebar {
+	padding: 24px;
+	border-radius: 24px;
+	background: var(--text-secondary-color);
+	min-width: 294px;
+	max-height: fit-content;
+	max-width: min-content;
+	display: flex;
+	flex-direction: column;
+	gap: 24px;
+	box-sizing: border-box;
+}

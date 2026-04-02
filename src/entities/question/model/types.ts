@@ -29,29 +29,3 @@ export interface IQuestion {
   };
   updatedById: string;
 }
-
-export interface IQuestionFiltersState {
-  search: string;
-  complexity: string;
-  rate: string;
-  skill: number | null;
-  page: number;
-  limit: number;
-  specializationId: number;
-}
-
-export type TQuestionFiltersKey = Extract<
-  keyof IQuestionFiltersState,
-  "complexity" | "rate" | "skill" | "specializationId"
->;
-
-export type TQuestionProps = Pick<
-  IQuestion,
-  | "title"
-  | "rate"
-  | "complexity"
-  | "shortAnswer"
-  | "id"
-  | "questionSkills"
-  | "keywords"
->;

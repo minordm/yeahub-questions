@@ -1,7 +1,7 @@
 import { combineReducers } from "@reduxjs/toolkit";
-import { categoryApi } from "@entities/category";
+import { categoryApi } from "@shared/model/api";
 import { questionApi } from "@entities/question";
-import { questionFilters } from "@entities/question/model/slice";
+import questionFilters from "@entities/question/api/slice";
 
 export const rootReducer = combineReducers({
   questionFilters,

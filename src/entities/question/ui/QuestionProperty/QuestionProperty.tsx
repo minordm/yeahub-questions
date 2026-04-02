@@ -1,17 +1,16 @@
+import Bage from "@shared/ui/Bage/Bage";
 import styles from "./styles.module.css";
 
-interface QuestionPropertyProps {
-  property: string;
-  value?: string | number;
+interface IQuestionPropertyProps {
+  complexity: number;
+  rate: number;
 }
 
-const QuestionProperty = ({
-  property = "",
-  value = 0,
-}: QuestionPropertyProps) => {
+const QuestionProperty = ({ complexity, rate }: IQuestionPropertyProps) => {
   return (
-    <div className={styles.props}>
-      {property}:&nbsp;<span>{value}</span>
+    <div className={styles["quiestion-property"]}>
+      <Bage property="Сложность" value={complexity} />
+      <Bage property="Рейтинг" value={rate} />
     </div>
   );
 };
