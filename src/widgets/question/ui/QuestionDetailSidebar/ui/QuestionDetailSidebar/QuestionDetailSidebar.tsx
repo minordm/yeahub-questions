@@ -5,6 +5,7 @@ import SidebarUI from "../SidebarUI/SidebarUI";
 import { Navigate, useParams } from "react-router";
 import { useGetQuestionByIdQuery } from "@entities/question";
 import { skipToken } from "@reduxjs/toolkit/query";
+import closeSidebarIcon from "@shared/assets/close-sidebar.svg";
 import styles from "./styles.module.css";
 
 interface ISidebarProps {
@@ -53,7 +54,7 @@ const QuestionDetailSidebar = ({ setOpen, open }: ISidebarProps) => {
               className={styles.button}
               onClick={() => setOpen(false)}
             >
-              <img src="/close-sidebar.svg" alt="кнопка закрытия сайдбара" />
+              <img src={closeSidebarIcon} alt="кнопка закрытия сайдбара" />
             </button>
             <SidebarUI question={question} />
           </div>

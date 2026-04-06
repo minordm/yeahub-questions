@@ -1,4 +1,7 @@
 import { createSkeleton } from "@shared/lib/utils/createSkeleton";
+import Card from "@shared/ui/Card/Card";
+import questionImg from "@entities/question/assets/question.png";
+import sidebarIcon from "@entities/question/assets/sidebar-question-detail-icon.svg";
 import styles from "./styles.module.css";
 
 interface IQuestionInfoProps {
@@ -15,26 +18,25 @@ const QuestionDetailInfo = ({
   title,
 }: IQuestionInfoProps) => {
   return (
-    <div className={styles.about}>
-      <img
-        src="/question.png"
-        alt="картинка вопроса"
-        className={styles["question-image"]}
-      />
-      <div className={styles.info}>
-        <div className={styles.title}>
-          {isLoading ? createSkeleton(1, 58, 221) : <h1>{title}</h1>}
+    <Card>
+      <div className={styles.about}>
+        <img
+          src={questionImg}
+          alt="картинка вопроса"
+          className={styles["question-image"]}
+        />
+        <div className={styles.info}>
+          <div className={styles.title}>
+            {isLoading ? createSkeleton(1, 58, 221) : <h1>{title}</h1>}
 
-          <button onClick={showModal} className={styles.sidebar}>
-            <img
-              src="/sidebar-question-detail-icon.svg"
-              alt="иконка сайдбара подробного вопроса"
-            />
-          </button>
+            <button onClick={showModal} className={styles.sidebar}>
+              <img src={sidebarIcon} alt="иконка сайдбара подробного вопроса" />
+            </button>
+          </div>
+          {isLoading ? createSkeleton(1, 42, 259) : <p>{description}</p>}
         </div>
-        {isLoading ? createSkeleton(1, 42, 259) : <p>{description}</p>}
       </div>
-    </div>
+    </Card>
   );
 };
 

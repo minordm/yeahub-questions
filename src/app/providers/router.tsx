@@ -2,6 +2,7 @@ import App from "@app/layouts/App";
 import NotFoundPage from "@pages/not-found";
 import QuestionDetailPage from "@pages/question-detail";
 import QuestionsListPage from "@pages/question-list";
+import { CreateQuizPage, QuizResultPage, QuizPage } from "@pages/quiz";
 import { createBrowserRouter } from "react-router";
 
 export const router = createBrowserRouter([
@@ -9,8 +10,14 @@ export const router = createBrowserRouter([
     path: "/",
     element: <App />,
     children: [
-      { path: "/", element: <QuestionsListPage /> },
-      { path: "/:id", element: <QuestionDetailPage /> },
+      {
+        path: "/",
+        element: (
+          <div style={{ height: "100vh" }}>Заглушка enterview страницы</div>
+        ),
+      },
+      { path: "/questions", element: <QuestionsListPage /> },
+      { path: "/questions/:id", element: <QuestionDetailPage /> },
       {
         path: "/collections",
         element: (
@@ -20,13 +27,14 @@ export const router = createBrowserRouter([
         ),
       }, // собеседования (переделать материалы на собеседования)
       {
-        path: "/trainer",
-        element: (
-          <div style={{ height: "100vh" }}>
-            Страница тренажера в разработке...
-          </div>
-        ),
-      }, // вкладка тренажер
+        path: "/quiz/new",
+        element: <CreateQuizPage />,
+      },
+      {
+        path: "/quiz",
+        element: <QuizPage />,
+      },
+      { path: "/quiz/result", element: <QuizResultPage /> },
       {
         path: "/skills",
         element: (

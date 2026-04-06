@@ -1,4 +1,5 @@
-.button {
+.small {
+	width: fit-content;
 	display: inline-flex;
 	align-items: center;
 	border: none;
@@ -12,6 +13,12 @@
 
 	&:hover {
 		text-decoration: underline;
+	}
+
+	&:disabled {
+		text-decoration: none;
+		cursor: not-allowed;
+		color: #8C8C8C;
 	}
 }
 
@@ -30,5 +37,60 @@
 
 	&:active {
 		background: #400799;
+	}
+
+	&:disabled {
+		cursor: not-allowed;
+		background-color: #D1D1D1;
+	}
+}
+
+.exit {
+	align-self: flex-end;
+	padding: 15px 42px;
+	border: none;
+	border-radius: 12px;
+	background-color: #FDD8E1;
+
+	font-weight: 600;
+	font-size: 16px;
+	color: #F3164E;
+
+	&:focus {
+		outline: 1px solid #F3164E;
+	}
+
+	&:hover {
+		background-color: #FBB1C4;
+	}
+
+	&:active {
+		color: #D50B3E;
+		background-color: #F98BA6;
+	}
+}
+
+.nav {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	gap: 8px;
+	padding: 8px 10px;
+	border: none;
+	border-radius: 12px;
+	background-color: transparent;
+
+	font-weight: 500;
+	font-size: 16px;
+	color: #474747;
+
+	&:hover {
+		background-color: #F8F8F8;
+		color: #6A0BFF;
+	}
+
+	&.active {
+		color: #5509cc;
+		background-color: #f8f8f8;
 	}
 }

@@ -1,4 +1,5 @@
 import ReactPaginate from "react-paginate";
+import hellipIcon from "@shared/assets/hellip-icon.svg";
 import styles from "./styles.module.css";
 
 interface IPaginationButtonProps {
@@ -15,7 +16,7 @@ const Pagination = ({ setPage, pageCount }: IPaginationButtonProps) => {
       onPageChange={(event) => setPage(event.selected + 1)}
       previousLabel="&larr;"
       nextLabel="&rarr;"
-      breakLabel={<img src="/hellip-icon.svg" />}
+      breakLabel={<img src={hellipIcon} />}
       className={styles.wrapper}
       activeLinkClassName={styles.active}
       breakClassName={styles.break}

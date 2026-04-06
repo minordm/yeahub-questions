@@ -1,0 +1,32 @@
+.question-card {
+	display: flex;
+	flex-direction: row;
+	align-items: flex-start;
+	padding: 12px;
+	gap: 20px;
+	cursor: pointer;
+}
+
+.question-image-icon {
+	width: 120px;
+	height: 120px;
+	object-fit: contain;
+	object-position: center;
+	border-radius: 12px;
+}
+
+.question-info {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	padding: 0px;
+	gap: 8px;
+}
+
+.quiz-question-title {
+	font-weight: 500;
+	font-size: 18px;
+	line-height: 1.2;
+	color: #303030;
+	word-break: break-all;
+}

@@ -1,7 +1,8 @@
 import { createSkeleton } from "@shared/lib/utils/createSkeleton";
 import NotFound from "@shared/ui/NotFound/NotFound";
 import type { ReactNode } from "react";
-import type { IQuestion } from "@entities/question/model/types";
+import type { IQuestion } from "@shared/model/types";
+import sidebarIcon from "@entities/question/assets/sidebar-mobile-icon.svg";
 import styles from "./styles.module.css";
 
 interface IQuestionResponse {
@@ -40,7 +41,7 @@ const QuestionContent = ({
         <button className={styles["burger-button"]} onClick={openModal}>
           <img
             className={styles["sidebar-icon"]}
-            src="/sidebar-mobile-icon.svg"
+            src={sidebarIcon}
             alt="иконка фильтра вопросов"
           />
         </button>
@@ -49,7 +50,7 @@ const QuestionContent = ({
         {isLoading ? (
           createSkeleton(10, 72, 277, 8)
         ) : questions?.data.length ? (
-          questions.data.map((question) => renderQuestion(question))
+          questions.data.map(renderQuestion)
         ) : (
           <NotFound onClick={handleResetSearch} />
         )}

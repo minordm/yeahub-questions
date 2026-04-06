@@ -14,9 +14,7 @@ function App() {
     <ModalContext.Provider value={{ open, setOpen }}>
       <Header />
       <main className={styles.main}>
-        <div className={styles.container}>
-          <Outlet />
-        </div>
+        <Outlet />
       </main>
       <Footer />
     </ModalContext.Provider>

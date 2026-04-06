@@ -2,6 +2,7 @@ import useMediaQuery from "@shared/lib/hooks/useMediaQuery";
 import { createPortal } from "react-dom";
 import { useEffect } from "react";
 import SidebarMain from "../SidebarMain/SidebarMain";
+import closeSidebarIcon from "@shared/assets/close-sidebar.svg";
 import styles from "./styles.module.css";
 
 interface ISidebarProps {
@@ -35,7 +36,7 @@ const QuestionsListSidebar = ({ open, setOpen }: ISidebarProps) => {
           <div className={styles.overlay} onClick={() => setOpen(false)} />
           <div className={styles.modal}>
             <button className={styles.button} onClick={() => setOpen(false)}>
-              <img src="/close-sidebar.svg" alt="кнопка закрытия сайдбара" />
+              <img src={closeSidebarIcon} alt="кнопка закрытия сайдбара" />
             </button>
             <SidebarMain closeModal={() => setOpen(false)} />
           </div>

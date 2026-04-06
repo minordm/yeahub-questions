@@ -2,42 +2,40 @@ import Accordion from "@shared/ui/Accordion/Accordion";
 import QuestionProperty from "../QuestionProperty/QuestionProperty";
 import { HtmlRenderer } from "@shared/ui/HtmlRenderer/HtmlRenderer";
 
-import type { Ref } from "react";
-import styles from "./styles.module.css";
+import { useNavigate } from "react-router";
+import type { IQuestion } from "@shared/model/types";
+import Button from "@shared/ui/Button/Button";
 
-interface IQuestionAccordionProps {
-  rate: number;
-  complexity: number;
-  onNavigate: () => void;
-  answer: string;
-  title: string;
-  handleOpen: () => void;
-  height: number;
-  answerRef: Ref<HTMLDivElement>;
-}
+type TQuestionProps = Pick<
+  IQuestion,
+  "title" | "rate" | "complexity" | "shortAnswer" | "id"
+>;
 
 const QuestionAccordion = ({
+  id,
   rate,
   complexity,
-  onNavigate,
-  answer,
+  shortAnswer,
   title,
-  handleOpen,
-  height,
-  answerRef,
-}: IQuestionAccordionProps) => {
+}: TQuestionProps) => {
+  const navigation = useNavigate();
+
+  const handleNavigate = () => {
+    window.scrollTo(0, 0);
+    navigation(`/questions/${id}`);
+  };
+
   return (
-    <Accordion
-      handleOpen={handleOpen}
-      height={height}
-      answerRef={answerRef}
-      title={title}
-    >
+    <Accordion title={title}>
       <QuestionProperty complexity={complexity} rate={rate} />
-      <HtmlRenderer html={answer} />
-      <button className={styles.close} onClick={onNavigate}>
+      <HtmlRenderer html={shortAnswer} />
+      <Button
+        classnameType="small"
+        onClick={handleNavigate}
+        style={{ alignSelf: "flex-end", fontWeight: 600 }}
+      >
         Подробнее
-      </button>
+      </Button>
     </Accordion>
   );
 };

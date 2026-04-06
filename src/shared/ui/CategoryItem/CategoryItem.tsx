@@ -1,6 +1,6 @@
 import cn from "classnames";
 import type { ButtonHTMLAttributes } from "react";
-
+import categoryIcon from "@shared/assets/figmaCategoryIcon.svg";
 import styles from "./styles.module.css";
 
 type CategoryItemProps = ButtonHTMLAttributes<HTMLButtonElement> & {
@@ -24,7 +24,7 @@ const CategoryItem = ({
     >
       {imageSrc && (
         <div className={styles.icon}>
-          <img src="/figmaCategoryIcon.svg" alt="Иконка категории" />
+          <img src={categoryIcon} alt="Иконка категории" />
           &nbsp;
         </div>
       )}

@@ -1,15 +1,12 @@
 import { useNavigate } from "react-router";
 import { useAppDispatch } from "@shared/model/storeFn";
-import {
-  questionFiltersActions,
-  QuestionProperty,
-  type IQuestion,
-} from "@entities/question";
+import { questionFiltersActions, QuestionProperty } from "@entities/question";
+import type { IQuestion } from "@shared/model/types";
 
 import CategoryItem from "@shared/ui/CategoryItem/CategoryItem";
-import { Info } from "@entities/author";
-import SidebarBlock from "@shared/ui/SidebarBlock/SidebarBlock";
+import Block from "@shared/ui/Block/Block";
 import Button from "@shared/ui/Button/Button";
+import Info from "../Info/Info";
 import styles from "./styles.module.css";
 
 interface ISidebarQuestionDetailProps {
@@ -22,19 +19,19 @@ const SidebarUI = ({ question }: ISidebarQuestionDetailProps) => {
 
   const handleSearch = (search: string) => {
     dispatch(questionFiltersActions.updateSearch(search));
-    navigate("/");
+    navigate("/questions");
   };
 
   return (
     <div className={styles["sidebar__container"]}>
       <aside className={styles.sidebar}>
-        <SidebarBlock title="Уровень">
+        <Block title="Уровень">
           <QuestionProperty
             complexity={question?.complexity ?? 0}
             rate={question?.rate ?? 0}
           />
-        </SidebarBlock>
-        <SidebarBlock title="Навыки">
+        </Block>
+        <Block title="Навыки">
           {question?.questionSkills.map((skill) => (
             <CategoryItem
               key={skill.id}
@@ -42,18 +39,17 @@ const SidebarUI = ({ question }: ISidebarQuestionDetailProps) => {
               onClick={() => handleSearch(skill.title)}
             />
           ))}
-        </SidebarBlock>
+        </Block>
 
-        <SidebarBlock title="Ключевые слова">
+        <Block title="Ключевые слова">
           {question?.keywords.map((keyword) => (
             <Button
               key={keyword}
               classnameType="small"
-              text={`#${keyword}`}
               onClick={() => handleSearch(keyword)}
-            />
+            >{`#${keyword}`}</Button>
           ))}
-        </SidebarBlock>
+        </Block>
       </aside>
       <Info />
     </div>

@@ -1,0 +1,36 @@
+.quiz {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-end;
+	gap: 48px;
+	padding: 24px;
+}
+
+.quiz-detail {
+	align-items: flex-start;
+	gap: 14px;
+}
+
+.quiz-header {
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: flex-end;
+}
+
+.quiz-detail-title {
+	font-size: 20px;
+}
+
+.quiz-count {
+	font-weight: 500;
+	font-size: 14px;
+	color: #757575;
+}
+
+@media (max-width: 767px) {
+	.quiz-detail {
+		padding: 20px 10px;
+	}
+}

@@ -1,0 +1,32 @@
+.quiz-wrapper {
+	display: flex;
+	flex-direction: column;
+	gap: 24px;
+}
+
+.quiz-title {
+	font-weight: 500;
+	font-size: 24px;
+	color: #191919;
+}
+
+.quiz-categories {
+	display: flex;
+	flex-direction: row;
+}
+
+.quiz-categories-container {
+	display: flex;
+	flex-direction: column;
+	gap: 21px;
+}
+
+.shrink {
+	flex-shrink: 0;
+}
+
+@media (max-width: 1023px) {
+	.quiz-categories {
+		flex-direction: column;
+	}
+}

@@ -1,8 +1,7 @@
 import HeaderNavDesktop from "./HeaderNavDesktop/HeaderNavDesktop";
 import { useModalContext } from "@shared/lib/providers/ModalContext";
-import { createPortal } from "react-dom";
-
 import { FaChevronDown } from "react-icons/fa6";
+import Modal from "@shared/ui/Modal/Modal";
 import styles from "./styles.module.css";
 
 const HeaderNav = () => {
@@ -24,18 +23,9 @@ const HeaderNav = () => {
             }}
           />
         </button>
-        {open === "navigation" &&
-          createPortal(
-            <>
-              <div className={styles.modal}>
-                <HeaderNavDesktop
-                  isMobile="mobile"
-                  closeModal={() => setOpen("")}
-                />
-              </div>
-            </>,
-            document.getElementById("portal")!,
-          )}
+        <Modal isOpen={open === "navigation"} type="nav">
+          <HeaderNavDesktop isMobile="mobile" closeModal={() => setOpen("")} />
+        </Modal>
       </>
 
       <HeaderNavDesktop closeModal={() => setOpen("")} />

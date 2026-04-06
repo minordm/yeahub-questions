@@ -1,3 +1,8 @@
+import figmaIcon from "@widgets/Footer/assets/figma-icon.png";
+import tgIcon from "@widgets/Footer/assets/tg-icon.png";
+import ytIcon from "@widgets/Footer/assets/yt-icon.png";
+import ttIcon from "@widgets/Footer/assets/tt-icon.png";
+import gitIcon from "@widgets/Footer/assets/git-icon.png";
 import styles from "./styles.module.css";
 
 const Footer = () => {
@@ -26,22 +31,22 @@ const Footer = () => {
                 href="https://www.figma.com/community/file/1438482355619792777/yeahub-public"
                 target="_blank"
               >
-                <img src="/figma-icon.png" alt="Иконка фигмы" />
+                <img src={figmaIcon} alt="Иконка фигмы" />
               </a>
               <a href="https://t.me/yeahub" target="_blank">
-                <img src="/tg-icon.png" alt="Иконка телеграмма" />
+                <img src={tgIcon} alt="Иконка телеграмма" />
               </a>
               <a href="https://www.youtube.com/@yeahub" target="_blank">
-                <img src="/yt-icon.png" alt="Иконка ютьюба" />
+                <img src={ytIcon} alt="Иконка ютьюба" />
               </a>
               <a href="https://www.tiktok.com/@yeahub%5C_it" target="_blank">
-                <img src="/tt-icon.png" alt="Иконка тиктока" />
+                <img src={ttIcon} alt="Иконка тиктока" />
               </a>
               <a
                 href="https://github.com/YeaHubTeam/yeahub-platform"
                 target="_blank"
               >
-                <img src="/git-icon.png" alt="Иконка гита" />
+                <img src={gitIcon} alt="Иконка гита" />
               </a>
             </div>
           </div>

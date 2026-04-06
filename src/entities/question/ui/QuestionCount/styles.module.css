@@ -1,0 +1,22 @@
+.question-counter-container {
+	width: fit-content;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	gap: 16px;
+	padding: 10px 12px;
+	border: 1px solid #BABABA;
+	border-radius: 12px;
+
+	font-weight: 500;
+	font-size: 16px;
+	color: #BABABA;
+}
+
+.counter-button {
+	cursor: pointer;
+}
+
+.question-counter {
+	color: #000;
+}

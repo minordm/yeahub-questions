@@ -4,15 +4,6 @@
 	padding: 0;
 }
 
-.container {
-	width: 100%;
-	max-width: 1216px;
-	position: relative;
-	display: flex;
-	flex-direction: row;
-	gap: 20px;
-}
-
 @media (max-width: 1439px) {
 	.main {
 		padding: 0 60px;

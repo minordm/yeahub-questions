@@ -27,7 +27,7 @@ const QuestionDetail = ({ setOpen }: IQuestionProps) => {
   const height = useCalcHeight({ ref: answerRef, isOpen, initialHeight: 140 });
 
   if (isError) {
-    return <Navigate to={"*"} />;
+    return <Navigate to={"/*"} />;
   }
 
   return (
@@ -36,7 +36,7 @@ const QuestionDetail = ({ setOpen }: IQuestionProps) => {
       isLoading={isLoading}
       answerRef={answerRef}
       description={question?.description ?? ""}
-      height={height}
+      height={height + 54}
       longAnswer={question?.longAnswer ?? ""}
       shortAnswer={question?.shortAnswer ?? ""}
       title={question?.title ?? ""}

@@ -11,7 +11,7 @@ const useCalcHeight = ({ ref, isOpen, initialHeight }: useCalcHeightProps) => {
 
   useLayoutEffect(() => {
     if (isOpen && ref.current) {
-      setHeight(ref.current.scrollHeight + 30);
+      setHeight(ref.current.scrollHeight - 24);
     } else {
       setHeight(initialHeight);
     }
