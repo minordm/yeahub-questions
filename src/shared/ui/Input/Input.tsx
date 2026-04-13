@@ -10,7 +10,13 @@ const Input = ({ ...props }: TSearchInputProps) => {
       <label htmlFor="search">
         <img className={styles.icon} src={searchIcon} alt="Икнока поиска" />
       </label>
-      <input name="search" id="search" className={styles.input} {...props} />
+      <input
+        data-testid="input"
+        name="search"
+        id="search"
+        className={styles.input}
+        {...props}
+      />
     </div>
   );
 };

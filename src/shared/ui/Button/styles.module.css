@@ -35,7 +35,8 @@
 		background: #5509cc;
 	}
 
-	&:active {
+	&:active,
+	&.active {
 		background: #400799;
 	}
 
@@ -64,7 +65,8 @@
 		background-color: #FBB1C4;
 	}
 
-	&:active {
+	&:active,
+	&.active {
 		color: #D50B3E;
 		background-color: #F98BA6;
 	}
@@ -89,6 +91,7 @@
 		color: #6A0BFF;
 	}
 
+	&:active,
 	&.active {
 		color: #5509cc;
 		background-color: #f8f8f8;
