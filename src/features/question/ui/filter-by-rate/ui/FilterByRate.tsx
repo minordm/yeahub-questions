@@ -1,8 +1,7 @@
 import type { ICategoryProp } from "@entities/category/model/types";
 import { questionFiltersActions } from "@entities/question";
 import { useAppDispatch, useAppSelector } from "@shared/model/storeFn";
-import CategoryItem from "@shared/ui/CategoryItem/CategoryItem";
-import Block from "@shared/ui/Block/Block";
+import FilterBlock from "@shared/ui/FilterBlock/FilterBlock";
 
 const FilterByRate = ({ closeModal }: { closeModal?: () => void }) => {
   const rating: ICategoryProp[] = [
@@ -25,16 +24,12 @@ const FilterByRate = ({ closeModal }: { closeModal?: () => void }) => {
   };
 
   return (
-    <Block title="Рейтинг вопросов">
-      {rating.map((item) => (
-        <CategoryItem
-          key={item.id}
-          title={item.title}
-          isActive={rateId === item.id}
-          onClick={() => handleSelectRate(item.id)}
-        />
-      ))}
-    </Block>
+    <FilterBlock
+      title="Рейтинг вопросов"
+      filterData={rating}
+      handleSelectFilter={handleSelectRate}
+      selectedFilter={rateId}
+    />
   );
 };
 

@@ -1,8 +1,7 @@
 import type { ICategoryProp } from "@entities/category/model/types";
 import { questionFiltersActions } from "@entities/question";
 import { useAppDispatch, useAppSelector } from "@shared/model/storeFn";
-import CategoryItem from "@shared/ui/CategoryItem/CategoryItem";
-import Block from "@shared/ui/Block/Block";
+import FilterBlock from "@shared/ui/FilterBlock/FilterBlock";
 
 const FilterByComplexity = ({ closeModal }: { closeModal?: () => void }) => {
   const complexity: ICategoryProp[] = [
@@ -26,16 +25,12 @@ const FilterByComplexity = ({ closeModal }: { closeModal?: () => void }) => {
   };
 
   return (
-    <Block title="Сложность">
-      {complexity.map((item) => (
-        <CategoryItem
-          key={item.id}
-          title={item.title}
-          isActive={complexityId === item.id}
-          onClick={() => handleSelectComplexity(item.id)}
-        />
-      ))}
-    </Block>
+    <FilterBlock
+      title="Сложность"
+      filterData={complexity ?? []}
+      handleSelectFilter={handleSelectComplexity}
+      selectedFilter={complexityId}
+    />
   );
 };
 

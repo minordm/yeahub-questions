@@ -1,15 +1,12 @@
 import type { RefObject } from "react";
-import QuestionDetailInfo from "../QuestionDetailInfo/QuestionDetailInfo";
-import QuestionDetailAnswer from "../QuestionDetailAnswer/QuestionDetailAnswer";
+import { QuestionDetailInfo, QuestionDetailAnswer } from "@entities/question";
 import styles from "./styles.module.css";
+import type { IQuestion } from "@shared/model/types";
 
 interface QuestionContentProp {
   showModal: () => void;
   isLoading: boolean;
-  title: string;
-  description: string;
-  shortAnswer: string;
-  longAnswer: string;
+  question: IQuestion | undefined;
   answerRef: RefObject<HTMLDivElement | null>;
   height: number;
   isOpen: boolean;
@@ -19,10 +16,7 @@ interface QuestionContentProp {
 const QuestionDetailContent = ({
   showModal,
   isLoading,
-  title,
-  description,
-  shortAnswer,
-  longAnswer,
+  question,
   answerRef,
   height,
   isOpen,
@@ -32,20 +26,20 @@ const QuestionDetailContent = ({
     <div className={styles["question-detail"]}>
       <QuestionDetailInfo
         isLoading={isLoading}
-        description={description ?? ""}
-        title={title ?? ""}
+        description={question?.description ?? ""}
+        title={question?.title ?? ""}
         showModal={showModal}
       />
 
       <div className={styles.questions}>
         <QuestionDetailAnswer
-          answerText={shortAnswer ?? ""}
+          answerText={question?.shortAnswer ?? ""}
           isLoading={isLoading}
           title="Краткий ответ"
           type="short"
         />
         <QuestionDetailAnswer
-          answerText={longAnswer ?? ""}
+          answerText={question?.longAnswer ?? ""}
           isLoading={isLoading}
           title="Развёрнутый ответ"
           type="long"

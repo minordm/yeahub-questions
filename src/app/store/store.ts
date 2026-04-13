@@ -1,15 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { questionApi } from "@entities/question";
-import { categoryApi } from "@shared/model/api";
+import { baseApi } from "@shared/api/api";
 import { rootReducer } from "./reducer";
 
 export const store = configureStore({
   reducer: rootReducer,
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat(
-      questionApi.middleware,
-      categoryApi.middleware,
-    ),
+    getDefaultMiddleware().concat(baseApi.middleware),
 });
 
 export type RootState = ReturnType<typeof store.getState>;

@@ -1,4 +1,4 @@
-import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+import { baseApi } from "@shared/api/api";
 import type { IQuestion } from "@shared/model/types";
 
 interface IQuestionResponse {
@@ -17,15 +17,11 @@ interface IGetQuestionsProps {
   skills?: number | null;
 }
 
-export const questionApi = createApi({
-  reducerPath: "questionApi",
-  baseQuery: fetchBaseQuery({
-    baseUrl: "https://api.yeatwork.ru/questions/public-questions",
-  }),
+export const questionApi = baseApi.injectEndpoints({
   endpoints: (build) => ({
     getQuestions: build.query<IQuestionResponse, IGetQuestionsProps>({
       query: ({ page, title, complexity, rate, specializationId, skills }) => ({
-        url: `/`,
+        url: `/questions/public-questions/`,
         params: {
           page,
           title,
@@ -37,7 +33,7 @@ export const questionApi = createApi({
       }),
     }),
     getQuestionById: build.query<IQuestion, number>({
-      query: (id: number) => `/${id}`,
+      query: (id: number) => `/questions/public-questions/${id}`,
     }),
   }),
 });

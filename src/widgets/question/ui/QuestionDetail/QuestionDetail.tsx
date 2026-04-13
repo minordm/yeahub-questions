@@ -1,11 +1,9 @@
 import { useRef, useState } from "react";
-import {
-  QuestionDetailContent,
-  useGetQuestionByIdQuery,
-} from "@entities/question";
+import { useGetQuestionByIdQuery } from "@entities/question";
 import { Navigate, useParams } from "react-router";
 import { skipToken } from "@reduxjs/toolkit/query";
 import useCalcHeight from "@shared/lib/hooks/useCalcHeight";
+import QuestionDetailContent from "../QuestionDetailContent/QuestionDetailContent";
 
 interface IQuestionProps {
   setOpen: (value: boolean) => void;
@@ -35,11 +33,8 @@ const QuestionDetail = ({ setOpen }: IQuestionProps) => {
       showModal={() => setOpen(true)}
       isLoading={isLoading}
       answerRef={answerRef}
-      description={question?.description ?? ""}
+      question={question}
       height={height + 54}
-      longAnswer={question?.longAnswer ?? ""}
-      shortAnswer={question?.shortAnswer ?? ""}
-      title={question?.title ?? ""}
       handleOpen={handleOpen}
       isOpen={isOpen}
     />

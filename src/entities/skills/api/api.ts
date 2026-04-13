@@ -1,4 +1,4 @@
-import { categoryApi } from "@shared/model/api";
+import { baseApi } from "@shared/api/api";
 import type { ICategory } from "@shared/model/types";
 
 interface ISkillsResponse {
@@ -8,7 +8,7 @@ interface ISkillsResponse {
   total: number;
 }
 
-export const skillsApi = categoryApi.injectEndpoints({
+export const skillsApi = baseApi.injectEndpoints({
   endpoints: (build) => ({
     getSkills: build.query<
       ISkillsResponse,

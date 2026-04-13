@@ -1,4 +1,4 @@
-import { categoryApi } from "@shared/model/api";
+import { baseApi } from "@shared/api/api";
 import type { IQuizResponse } from "@features/quiz/model/types";
 
 interface IQuiz {
@@ -8,7 +8,7 @@ interface IQuiz {
   specialization: number;
 }
 
-export const quizApi = categoryApi.injectEndpoints({
+export const quizApi = baseApi.injectEndpoints({
   endpoints: (build) => ({
     getQuiz: build.query<IQuizResponse, IQuiz>({
       query: ({ complexity, limit, skills, specialization }) => ({
